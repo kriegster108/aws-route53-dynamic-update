@@ -1,4 +1,4 @@
-# Updates a dns recordset from AWS Route53
+# Operation
 
 Simply run this command from some machine inside your LAN behind a NAT firewall
 you would like to update its public ip address:
@@ -9,7 +9,7 @@ docker run \
   -e AWS_SECRET_ACCESS_KEY=YYYY \
   -e ZONEID=ZZZZZ \
   -e RECORDSET=some-name.example.com \
-  --rm -it ghcr.io/chrodriguez/aws-route53-dynamic-update
+  --rm -it kriegster/aws-route53-dynamic-update
 ```
 
 It can also admit the following environment variables:
@@ -57,7 +57,7 @@ spec:
           restartPolicy: Never #This allow to inspect possible POD errors
           containers:
           - name: dns-update
-            image: chrodriguez/aws-route53-dynamic-update
+            image: kriegster/aws-route53-dynamic-update
             imagePullPolicy: Always
             env:
             - name: AWS_ACCESS_KEY_ID
